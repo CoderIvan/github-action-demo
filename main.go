@@ -6,7 +6,7 @@ import (
 )
 
 const PORT = 80
-const VERSION = "1.0.2.alpha"
+const VERSION = "1.0.2.beta"
 
 func versionHandler(w http.ResponseWriter, r *http.Request) {
 	// 设置返回的内容为JSON格式
