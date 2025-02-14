@@ -3,7 +3,6 @@ name: branch-build
 on:
   push:
     branches:
-      - 'main'
       - 'test'
 
 env:
@@ -16,12 +15,6 @@ jobs:
       - 
         name: Checkout
         uses: actions/checkout@v4
-      - 
-        name: Get commit hash
-        run: |
-          COMMIT_HASH=$(git rev-parse --short HEAD)
-          echo "Current commit hash is: $COMMIT_HASH"
-          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
       - 
         name: Get branch name
         run: |
@@ -47,5 +40,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.DOCKERHUB_USERNAME }}/github-action-demo:${{ env.COMMIT_HASH }}
             ${{ env.DOCKERHUB_USERNAME }}/github-action-demo:${{ env.BRANCH_NAME }}
